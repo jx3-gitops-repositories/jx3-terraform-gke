@@ -80,3 +80,9 @@ variable "lets_encrypt_production" {
   type        = bool
   default     = true
 }
+
+variable "gsm" {
+  description = "Enables Google Secrets Manager, not available with JX2"
+  type        = bool
+  default     = false
+}
