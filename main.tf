@@ -21,7 +21,17 @@ output "connect" {
   value       = "connect to your cluster using `${module.jx.connect}`"
 }
 
+output "set_env_1" {
+  description = "Set the GCP project environment variable"
+  value       = "export PROJECT_ID=${module.jx.gcp_project}"
+}
+
+output "set_env_2" {
+  description = "Set the cluster name environment variable"
+  value       = "export CLUSTER_NAME=${module.jx.cluster_name}"
+}
+
 output "next" {
   description = "Follow instructions to enable Jenkins X install via GitOps"
-  value       = "http://jenkins-x.io/foo"
+  value       = "https://jenkins-x.io/docs/v3/getting-started/"
 }
