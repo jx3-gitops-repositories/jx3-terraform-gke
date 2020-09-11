@@ -1,5 +1,5 @@
 module "jx" {
-  source                  = "github.com/jenkins-x/terraform-google-jx?ref=gsm"
+  source                  = "github.com/jenkins-x/terraform-google-jx?ref=jx3"
   gcp_project             = var.gcp_project
   jx2                     = false
   gsm                     = var.gsm
@@ -14,6 +14,9 @@ module "jx" {
   parent_domain           = var.parent_domain
   tls_email               = var.tls_email
   lets_encrypt_production = var.lets_encrypt_production
+  jx_git_url              = var.jx_git_url
+  jx_bot_username         = var.jx_bot_username
+  jx_bot_token            = var.jx_bot_token
 }
 
 output "connect" {
@@ -21,17 +24,12 @@ output "connect" {
   value       = "connect to your cluster using `${module.jx.connect}`"
 }
 
-output "set_env_1" {
-  description = "Set the GCP project environment variable"
-  value       = "export PROJECT_ID=${module.jx.gcp_project}"
+output "next1" {
+  description = "Follow Jenkins X install logs"
+  value       = "and follow the the Jenkins X installation logs using `jx admin logs -n jx-git-operator`"
 }
 
-output "set_env_2" {
-  description = "Set the cluster name environment variable"
-  value       = "export CLUSTER_NAME=${module.jx.cluster_name}"
-}
-
-output "next" {
-  description = "Follow instructions to enable Jenkins X install via GitOps"
-  value       = "https://jenkins-x.io/docs/v3/getting-started/"
+output "next2" {
+  description = "Follow Jenkins X 3.x alpha docs for more information"
+  value       = "https://jenkins-x.io/docs/v3/"
 }
