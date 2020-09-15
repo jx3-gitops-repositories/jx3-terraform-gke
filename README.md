@@ -19,6 +19,10 @@ echo >> jx_bot_username = foo-bot
 echo >> jx_bot_token = abc123
 echo >> gcp_project = my-cool-project
 ```
+If using Google Secret Manager cluster template from above:
+```
+echo >> gsm = true
+```
 
 ```
 terraform init
