@@ -14,14 +14,14 @@ Use this template to easily create a new Git Repository for Jenkins X cloud infr
 Commit required terraform values from below to your `values.auto.tfvars`, e.g.
 
 ```
-echo >> jx_git_url = https://github.com/$owner/$repo_from_cluster_template_above
-echo >> jx_bot_username = foo-bot
-echo >> jx_bot_token = abc123
-echo >> gcp_project = my-cool-project
+echo jx_git_url = https://github.com/$owner/$repo_from_cluster_template_above >> values.auto.tfvars
+echo jx_bot_username = foo-bot >> values.auto.tfvars
+echo jx_bot_token = abc123 >> values.auto.tfvars
+echo gcp_project = my-cool-project >> values.auto.tfvars
 ```
 If using Google Secret Manager cluster template from above:
 ```
-echo >> gsm = true
+echo gsm = true >> values.auto.tfvars
 ```
 
 ```
