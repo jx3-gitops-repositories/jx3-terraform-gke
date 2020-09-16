@@ -1,42 +1,77 @@
 # Google Terraform Quickstart template
 
-Use this template to easily create a new Git Repository for Jenkins X cloud infrastructure needs.
+Use this template to easily create a new Git Repository for managing Jenkins X cloud infrastructure needs.
+
+We recommend using Terraform to manange the infrastructure needed to run Jenkins X.  There can be a number of cloud resources which need to be created such as:
+
+- Kubernetes cluster
+- Storage buckets for long term storage of logs
+- IAM Bindings to manage permissions for applications using cloud resources
+
+Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and cluster resources.  This requires two Git Repositories to achive this:
+- the first, infrastructure resources will be managed by Terraform and will keep resourecs in sync.
+- the second, the Kubernetes specific cluster resources will be managed by Jenkins X and keep resources in sync.
+
+# Prerequisites
+
+- Create a git bot user (different from your own personal user) and generate an access token, this will be used by Jenkins X to interact with git repositories
+  e.g. https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo
+
+  __This bot user needs to have write permission to write to any git repository used by Jenkins X.  This can be done by adding teh bot user to the git organisation level or individual repositories as a collaborator__
+
+- Install `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
+- Install `jx` CLI - [see here](https://github.com/jenkins-x/jx-cli/releases)
 
 # Getting started
 
-- Create your Infrastructure git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate
+1. Create and clone your Infrastructure git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate
 
-- Chose either Google Secret Manager or Vault based cluster GitHub Template
-    - Google Secret Manager: https://github.com/jx3-gitops-repositories/jx3-gke-gsm/generate
 
-    - Vault: https://github.com/jx3-gitops-repositories/jx3-gke-terraform-vault/generate
+2. Chose your desired secrets store, either Google Secret Manager or Vault and create your cluster git repository
+    - __Google Secret Manager__: https://github.com/jx3-gitops-repositories/jx3-gke-gsm/generate
+
+    - __Vault__: https://github.com/jx3-gitops-repositories/jx3-gke-terraform-vault/generate
 
 Commit required terraform values from below to your `values.auto.tfvars`, e.g.
 
+```sh
+echo jx_git_url = "https://github.com/$git_owner_from_cluster_template_above/$git_repo_from_cluster_template_above" >> values.auto.tfvars
+echo gcp_project = "my-cool-project" >> values.auto.tfvars
 ```
-echo jx_git_url = https://github.com/$owner/$repo_from_cluster_template_above >> values.auto.tfvars
-echo jx_bot_username = foo-bot >> values.auto.tfvars
-echo jx_bot_token = abc123 >> values.auto.tfvars
-echo gcp_project = my-cool-project >> values.auto.tfvars
-```
-If using Google Secret Manager cluster template from above:
-```
+If using Google Secret Manager (not Vault) cluster template from above enable it for Terraform using:
+```sh
 echo gsm = true >> values.auto.tfvars
 ```
 
-```
+Now, initialise, plan and apply Terraform:
+
+```sh
 terraform init
 ```
 
-```
+```sh
 terraform plan
 ```
 
-```
-terraform apply -auto-approve
+```sh
+terraform apply -var jx_bot_username=foo-bot -var jx_bot_token=abc123
 ```
 
-## Inputs
+Now follow the Terraform output next steps to track the creation of infrastructure and Jenkins X installation.
+
+Once finished you can now move into the Jenkins X Developer namespace
+
+```sh
+jx ns jx
+```
+
+and create or import your applications
+
+```sh
+jx project
+```
+
+## Terraform Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -56,6 +91,13 @@ terraform apply -auto-approve
 | parent\_domain | The parent domain to be allocated to the cluster | `string` | `""` | no |
 | resource\_labels | Set of labels to be applied to the cluster | `map(string)` | `{}` | no |
 | tls\_email | Email used by Let's Encrypt. Required for TLS when parent\_domain is specified | `string` | `""` | no |
+
+# Cleanup
+
+To remove any cloud resources created here run:
+```sh
+terraform destroy
+```
 
 # Contributing
 
