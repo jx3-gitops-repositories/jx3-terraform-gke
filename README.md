@@ -54,7 +54,21 @@ gcp_project = "my-gcp-project"
 gsm = true
 ```
 
-4. Now, initialise, plan and apply Terraform:
+4. commit and push any changes to your **Infrastructure** git repository:
+
+```sh
+git commit -a -m "fix: configure cluster repository and project"
+git push
+```
+
+5. Now define 2 environment variables to pass the bot user and token into Terraform:
+
+```sh
+export TF_VAR_jx_bot_username=my-bot-username
+export TF_VAR_jx_bot_token=my-bot-token
+```
+
+6. Now, initialise, plan and apply Terraform:
 
 ```sh
 terraform init
@@ -65,7 +79,7 @@ terraform plan
 ```
 
 ```sh
-terraform apply -var jx_bot_username=foo-bot -var jx_bot_token=abc123
+terraform apply
 ```
 
 Now follow the Terraform output next steps to track the creation of infrastructure and Jenkins X installation.
