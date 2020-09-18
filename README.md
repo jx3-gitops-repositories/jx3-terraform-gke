@@ -24,15 +24,17 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
 
 # Getting started
 
-1. Create and clone your Infrastructure git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate
+1. Create and clone your **Infrastructure** git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate
 
 
-2. Chose your desired secrets store, either Google Secret Manager or Vault and create your cluster git repository
+2. Create a **Cluster** git repository; choosing your desired secrets store, either Google Secret Manager or Vault:
     - __Google Secret Manager__: https://github.com/jx3-gitops-repositories/jx3-gke-gsm/generate
 
     - __Vault__: https://github.com/jx3-gitops-repositories/jx3-gke-terraform-vault/generate
 
-Commit required terraform values from below to your `values.auto.tfvars`, e.g.
+3. You need to configure the git URL of your **Cluster** git repository into the **Infrastructure** git repository. 
+
+So from inside a git clone of the **Infrastructure** git repository (which already has the files `main.tf` and `values.auto.tfvars` inside) commit the required terraform values from below to your `values.auto.tfvars`, e.g.
 
 ```sh
 echo jx_git_url = "https://github.com/$git_owner_from_cluster_template_above/$git_repo_from_cluster_template_above" >> values.auto.tfvars
@@ -43,7 +45,16 @@ If using Google Secret Manager (not Vault) cluster template from above enable it
 echo gsm = true >> values.auto.tfvars
 ```
 
-Now, initialise, plan and apply Terraform:
+The contents of your `values.auto.tfvars` file should look something like this (the last line will be omitted if not using gsm)....
+
+```terraform
+resource_labels = { "provider" : "jx" }
+jx_git_url = "https://github.com/myowner/myname-cluster"
+gcp_project = "my-gcp-project"
+gsm = true
+```
+
+4. Now, initialise, plan and apply Terraform:
 
 ```sh
 terraform init
