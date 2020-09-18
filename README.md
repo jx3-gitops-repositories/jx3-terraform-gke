@@ -22,6 +22,17 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
 - Install `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
 - Install `jx` CLI - [see here](https://github.com/jenkins-x/jx-cli/releases)
 
+# Git repositories
+
+We use 2 git repositories:
+
+* **Infrastructure** git repository for the Terraform configuration to setup/upgrade/modify your cloud infrastructure (kubernetes cluster, IAM accounts, IAM roles, buckets etc)
+* **Cluster** git repository to contain the `helmfile.yaml` file to define the helm charts to deploy in your cluster
+
+We use separate git repositories since the infrastructure tends to change rarely; whereas the cluster git repository changes alot (every time you add a new quickstart, import a project, release a project etc).
+
+Often different teams look after infrastructure; or you may use tools like Terraform Cloud to process changes to infrastructure & review changes to infrastructure more closely than promotion of applications.
+
 # Getting started
 
 1. Create and clone your **Infrastructure** git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate
