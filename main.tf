@@ -21,15 +21,15 @@ module "jx" {
 
 output "connect" {
   description = "Connect to cluster"
-  value       = "connect to your cluster using `${module.jx.connect}`"
+  value       = "${module.jx.connect}"
 }
 
-output "next1" {
+output "follow_install_logs" {
   description = "Follow Jenkins X install logs"
-  value       = "and follow the the Jenkins X installation logs using `jx admin logs -n jx-git-operator`"
+  value       = "jx admin logs -n jx-git-operator"
 }
 
-output "next2" {
+output "docs" {
   description = "Follow Jenkins X 3.x alpha docs for more information"
   value       = "https://jenkins-x.io/docs/v3/"
 }
