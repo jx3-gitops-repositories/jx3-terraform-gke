@@ -41,7 +41,7 @@ Often different teams look after infrastructure; or you may use tools like Terra
 2. Create a **Cluster** git repository; choosing your desired secrets store, either Google Secret Manager or Vault:
     - __Google Secret Manager__: https://github.com/jx3-gitops-repositories/jx3-gke-gsm/generate
 
-    - __Vault__: https://github.com/jx3-gitops-repositories/jx3-gke-terraform-vault/generate
+    - __Vault__: https://github.com/jx3-gitops-repositories/jx3-gke-vault/generate
 
 3. You need to configure the git URL of your **Cluster** git repository into the **Infrastructure** git repository. 
 
