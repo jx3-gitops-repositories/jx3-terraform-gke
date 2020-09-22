@@ -2,6 +2,13 @@
 set -e
 set -x
 
+# lets configure the terraform module
+export TF_VAR_gcp_project=$PROJECT_ID
+export TF_VAR_cluster_name=$CLUSTER_NAME
+export TF_VAR_jx_git_url=https://${GIT_SERVER_HOST}/${GH_OWNER}/env-${CLUSTER_NAME}-dev.git
+export TF_VAR_jx_bot_username=$GIT_USERNAME
+export TF_VAR_jx_bot_token=$GIT_TOKEN
+
 terraform init
 
-terraform destroy -auto-approve -var gcp_project=$PROJECT_ID -var jx_bot_username=$GIT_USERNAME -var jx_bot_token=$GIT_TOKEN -var jx_git_url=$GITOPS_REPO
+terraform destroy -auto-approve
