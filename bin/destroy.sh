@@ -2,7 +2,7 @@
 set -e
 set -x
 
-source ./configure.sh
+source `pwd`/bin/configure.sh
 
 terraform init
 
