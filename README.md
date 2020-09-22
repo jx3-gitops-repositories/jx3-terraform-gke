@@ -93,8 +93,14 @@ terraform plan
 terraform apply
 ```
 
-Now follow the Terraform output next steps to track the creation of infrastructure and Jenkins X installation.
-
+Connect to the cluster
+```
+$(terraform output connect)
+```
+Tail the Jenkins X installation logs
+```
+$(terraform output follow_install_logs)
+```
 Once finished you can now move into the Jenkins X Developer namespace
 
 ```sh
