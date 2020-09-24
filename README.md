@@ -48,12 +48,16 @@ Often different teams look after infrastructure; or you may use tools like Terra
 So from inside a git clone of the **Infrastructure** git repository (which already has the files `main.tf` and `values.auto.tfvars` inside) commit the required terraform values from below to your `values.auto.tfvars`, e.g.
 
 ```sh
-echo jx_git_url = "https://github.com/$git_owner_from_cluster_template_above/$git_repo_from_cluster_template_above" >> values.auto.tfvars
-echo gcp_project = "my-cool-project" >> values.auto.tfvars
+cat <<EOF >> values.auto.tfvars    
+jx_git_url = "https://github.com/$git_owner_from_cluster_template_above/$git_repo_from_cluster_template_above"
+gcp_project = "my-cool-project"
+EOF
 ```
 If using Google Secret Manager (not Vault) cluster template from above enable it for Terraform using:
 ```sh
-echo gsm = true >> values.auto.tfvars
+cat <<EOF >> values.auto.tfvars 
+gsm = true
+EOF
 ```
 
 The contents of your `values.auto.tfvars` file should look something like this (the last line will be omitted if not using gsm)....
