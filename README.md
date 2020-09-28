@@ -14,11 +14,15 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
 
 # Prerequisites
 
-- Create a git bot user (different from your own personal user) and generate an access token, this will be used by Jenkins X to interact with git repositories
+- A Git organisation that will be used to create the GitOps repositories used for Jenkins X below.
+  e.g. https://github.com/organizations/plan.
+- Create a git bot user (different from your own personal user)
+  e.g. https://github.com/join
+  and generate a a personal access token, this will be used by Jenkins X to interact with git repositories.
   e.g. https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo
 
-  __This bot user needs to have write permission to write to any git repository used by Jenkins X.  This can be done by adding the bot user to the git organisation level or individual repositories as a collaborator__
-
+- __This bot user needs to have write permission to write to any git repository used by Jenkins X.  This can be done by adding the bot user to the git organisation level or individual repositories as a collaborator__
+  Add the new `bot` user to your Git Organisation, for now give it Owner permissions, we will reduce this to member permissions soon.
 - Install `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
 - Install `jx` CLI - [see here](https://github.com/jenkins-x/jx-cli/releases)
 
@@ -34,6 +38,8 @@ We use separate git repositories since the infrastructure tends to change rarely
 Often different teams look after infrastructure; or you may use tools like Terraform Cloud to process changes to infrastructure & review changes to infrastructure more closely than promotion of applications.
 
 # Getting started
+
+__Note: remember to create the Git repositories below in your Git Organisation rather than your personal Git account else this will lead to issues with ChatOps and automated registering of webhooks__
 
 1. Create and clone your **Infrastructure** git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate
 
