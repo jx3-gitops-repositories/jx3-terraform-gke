@@ -60,6 +60,12 @@ variable "node_disk_type" {
   default     = "pd-standard"
 }
 
+variable "force_destroy" {
+  description = "Flag to determine whether storage buckets get forcefully destroyed"
+  type        = bool
+  default     = false
+}
+
 // ----------------------------------------------------------------------------
 // Ingress
 // ----------------------------------------------------------------------------
