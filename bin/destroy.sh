@@ -8,4 +8,4 @@ terraform init
 
 terraform plan -destroy
 
-terraform destroy -auto-approve -var force_destroy=true
+terraform destroy -auto-approve
