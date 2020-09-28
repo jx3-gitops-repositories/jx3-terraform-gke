@@ -1,5 +1,5 @@
 module "jx" {
-  source                  = "github.com/jenkins-x/terraform-google-jx?ref=jx3"
+  source                  = "github.com/jenkins-x/terraform-google-jx?ref=master"
   gcp_project             = var.gcp_project
   jx2                     = false
   gsm                     = var.gsm
@@ -17,6 +17,7 @@ module "jx" {
   jx_git_url              = var.jx_git_url
   jx_bot_username         = var.jx_bot_username
   jx_bot_token            = var.jx_bot_token
+  force_destroy           = var.force_destroy
 }
 
 output "connect" {
