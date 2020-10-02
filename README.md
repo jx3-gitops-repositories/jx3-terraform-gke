@@ -19,7 +19,7 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
 - Create a git bot user (different from your own personal user)
   e.g. https://github.com/join
   and generate a a personal access token, this will be used by Jenkins X to interact with git repositories.
-  e.g. https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo
+  e.g. https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo,admin:repo_hook
 
 - __This bot user needs to have write permission to write to any git repository used by Jenkins X.  This can be done by adding the bot user to the git organisation level or individual repositories as a collaborator__
   Add the new `bot` user to your Git Organisation, for now give it Owner permissions, we will reduce this to member permissions soon.
