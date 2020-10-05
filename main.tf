@@ -22,7 +22,7 @@ module "jx" {
 
 output "connect" {
   description = "Connect to cluster"
-  value       = "${module.jx.connect}"
+  value       = module.jx.connect
 }
 
 output "follow_install_logs" {
