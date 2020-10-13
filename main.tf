@@ -27,7 +27,7 @@ output "connect" {
 
 output "follow_install_logs" {
   description = "Follow Jenkins X install logs"
-  value       = "jx admin logs -n jx-git-operator"
+  value       = "jx admin logs"
 }
 
 output "docs" {
