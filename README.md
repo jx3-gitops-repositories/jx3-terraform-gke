@@ -39,15 +39,18 @@ Often different teams look after infrastructure; or you may use tools like Terra
 
 # Getting started
 
-__Note: remember to create the Git repositories below in your Git Organisation rather than your personal Git account else this will lead to issues with ChatOps and automated registering of webhooks__
+__Note: remember to create the Git repositories below in your Git Organisation rather than your personal Git account else this will lead to issues with ChatOps and automated registering of webhooks__.
 
 1. Create and clone your **Infrastructure** git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate
 
+    Note: Ensure **Owner** is the name of the Git Organisation that will hold the GitOps repositories used for Jenkins X.
 
 2. Create a **Cluster** git repository; choosing your desired secrets store, either Google Secret Manager or Vault:
     - __Google Secret Manager__: https://github.com/jx3-gitops-repositories/jx3-gke-gsm/generate
 
     - __Vault__: https://github.com/jx3-gitops-repositories/jx3-gke-vault/generate
+    
+    Note: Ensure **Owner** is the name of the Git Organisation that will hold the GitOps repositories used for Jenkins X.
 
 3. You need to configure the git URL of your **Cluster** git repository into the **Infrastructure** git repository. 
 
