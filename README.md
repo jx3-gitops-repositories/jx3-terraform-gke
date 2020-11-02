@@ -9,8 +9,8 @@ We recommend using Terraform to manange the infrastructure needed to run Jenkins
 - IAM Bindings to manage permissions for applications using cloud resources
 
 Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and cluster resources.  This requires two Git Repositories to achieve this:
-- the first, infrastructure resources will be managed by Terraform and will keep resourecs in sync.
-- the second, the Kubernetes specific cluster resources will be managed by Jenkins X and keep resources in sync.
+- **Infrastructure**: infrastructure resources will be managed by Terraform and will keep resources in sync.
+- **Cluster**: the Kubernetes specific cluster resources will be managed by Jenkins X and keep resources in sync.
 
 # Prerequisites
 
