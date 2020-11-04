@@ -54,7 +54,7 @@ __Note: remember to create the Git repositories below in your Git Organisation r
 
 3. You need to configure the git URL of your **Cluster** git repository into the **Infrastructure** git repository. 
 
-So from inside a git clone of the **Infrastructure** git repository (which already has the files `main.tf` and `values.auto.tfvars` inside) commit the required terraform values from below to your `values.auto.tfvars`, e.g.
+So from inside a git clone of the **Infrastructure** git repository (which already has the files `main.tf` and `values.auto.tfvars` inside) you need to link to the other **Cluster** repository (which contains `helmfile.yaml`) by committing the required terraform values from below to your `values.auto.tfvars`, e.g.
 
 ```sh
 cat <<EOF >> values.auto.tfvars    
