@@ -18,6 +18,7 @@ module "jx" {
   jx_bot_username         = var.jx_bot_username
   jx_bot_token            = var.jx_bot_token
   force_destroy           = var.force_destroy
+  subdomain               = var.subdomain
 }
 
 output "connect" {
