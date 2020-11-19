@@ -135,6 +135,7 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 |------|-------------|------|---------|:--------:|
 | cluster\_location | The location (region or zone) in which the cluster master will be created. If you specify a zone (such as us-central1-a), the cluster will be a zonal cluster with a single cluster master. If you specify a region (such as us-west1), the cluster will be a regional cluster with multiple masters spread across zones in the region | `string` | `"us-central1-a"` | no |
 | cluster\_name | Name of the Kubernetes cluster to create | `string` | `""` | no |
+| force\_destroy | Flag to determine whether storage buckets get forcefully destroyed | `bool` | `false` | no |
 | gcp\_project | The name of the GCP project to use | `string` | n/a | yes |
 | gsm | Enables Google Secrets Manager, not available with JX2 | `bool` | `false` | no |
 | jx\_bot\_token | Bot token used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
@@ -148,6 +149,7 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 | node\_machine\_type | Node type for the Kubernetes cluster | `string` | `"n1-standard-2"` | no |
 | parent\_domain | The parent domain to be allocated to the cluster | `string` | `""` | no |
 | resource\_labels | Set of labels to be applied to the cluster | `map(string)` | `{}` | no |
+| subdomain | Optional sub domain for the installation | `string` | `""` | no |
 | tls\_email | Email used by Let's Encrypt. Required for TLS when parent\_domain is specified | `string` | `""` | no |
 
 # Cleanup
