@@ -73,6 +73,13 @@ variable "parent_domain" {
   description = "The parent domain to be allocated to the cluster"
   type        = string
   default     = ""
+  deprecation = "Please use apex_domain variable instead."
+}
+
+variable "apex_domain" {
+  description = "The apex domain to be allocated to the cluster"
+  type        = string
+  default     = ""
 }
 
 variable "tls_email" {
@@ -118,6 +125,14 @@ variable "parent_domain_gcp_project" {
   description = "The GCP project the parent domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project."
   type        = string
   default     = ""
+  deprecation = "Please use apex_domain_gcp_project variable instead."
+}
+
+variable "apex_domain_gcp_project" {
+  description = "The GCP project the apex domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project."
+  type        = string
+  default     = ""
+
 }
 
 variable "apex_domain_integration_enabled" {

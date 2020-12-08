@@ -11,6 +11,7 @@ module "jx" {
   max_node_count                  = var.max_node_count
   node_disk_size                  = var.node_disk_size
   node_disk_type                  = var.node_disk_type
+  apex_domain                     = var.apex_domain
   parent_domain                   = var.parent_domain
   tls_email                       = var.tls_email
   lets_encrypt_production         = var.lets_encrypt_production
@@ -19,6 +20,7 @@ module "jx" {
   jx_bot_token                    = var.jx_bot_token
   force_destroy                   = var.force_destroy
   subdomain                       = var.subdomain
+  apex_domain_gcp_project         = var.apex_domain_gcp_project
   parent_domain_gcp_project       = var.parent_domain_gcp_project
   apex_domain_integration_enabled = var.apex_domain_integration_enabled
 
