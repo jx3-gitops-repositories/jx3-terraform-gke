@@ -8,7 +8,7 @@ terraform init
 
 echo "lets connect to the cluster that we are about to destroy so that any helm charts are removed in the right kubernetes cluster..."
 
-$(terraform output connect)
+$(terraform output -raw connect)
 
 terraform plan -destroy
 
