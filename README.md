@@ -23,8 +23,8 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
 
 - __This bot user needs to have write permission to write to any git repository used by Jenkins X.  This can be done by adding the bot user to the git organisation level or individual repositories as a collaborator__
   Add the new `bot` user to your Git Organisation, for now give it Owner permissions, we will reduce this to member permissions soon.
-- Install `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
-- Install `jx` CLI - [see here](https://github.com/jenkins-x/jx-cli/releases)
+- Check and install latest `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
+- Check and install latest `jx` CLI - [see here](https://github.com/jenkins-x/jx/releases)
 
 # Git repositories
 
@@ -41,16 +41,16 @@ Often different teams look after infrastructure; or you may use tools like Terra
 
 __Note: remember to create the Git repositories below in your Git Organisation rather than your personal Git account else this will lead to issues with ChatOps and automated registering of webhooks__.
 
-1. Create and clone your **Infrastructure** git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate
+1. Create an **Infrastructure** git repo from this GitHub Template https://github.com/jx3-gitops-repositories/jx3-terraform-gke/generate.  If you are following from the Jenkins X website then this initial step may have already happened.
 
-    Note: Ensure **Owner** is the name of the Git Organisation that will hold the GitOps repositories used for Jenkins X.
+    __Note:__ Ensure **Owner** is the name of the Git Organisation that will hold the GitOps repositories used for Jenkins X.
 
 2. Create a **Cluster** git repository; choosing your desired secrets store, either Google Secret Manager or Vault:
     - __Google Secret Manager__: https://github.com/jx3-gitops-repositories/jx3-gke-gsm/generate
 
     - __Vault__: https://github.com/jx3-gitops-repositories/jx3-gke-vault/generate
     
-    Note: Ensure **Owner** is the name of the Git Organisation that will hold the GitOps repositories used for Jenkins X.
+    __Note:__ Ensure **Owner** is the name of the Git Organisation that will hold the GitOps repositories used for Jenkins X.
 
 3. You need to configure the git URL of your **Cluster** git repository (which contains `helmfile.yaml`) into the **Infrastructure** git repository (which contains `main.tf`). 
 
@@ -59,7 +59,7 @@ So from inside a git clone of the **Infrastructure** git repository (which alrea
 ```sh
 cat <<EOF >> values.auto.tfvars    
 jx_git_url = "https://github.com/$git_owner_from_cluster_template_above/$git_repo_from_cluster_template_above"
-gcp_project = "my-cool-project"
+gcp_project = "my-gcp-project"
 EOF
 ```
 If using Google Secret Manager (not Vault) cluster template from above enable it for Terraform using:
