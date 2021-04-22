@@ -147,8 +147,8 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 | node\_disk\_size | Node disk size in GB | `string` | `"100"` | no |
 | node\_disk\_type | Node disk type, either pd-standard or pd-ssd | `string` | `"pd-standard"` | no |
 | node\_machine\_type | Node type for the Kubernetes cluster | `string` | `"n1-standard-2"` | no |
-| parent\_domain | The parent domain to be allocated to the cluster | `string` | `""` | no |
-| parent\_domain\_gcp\_project | The GCP project the parent domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project. | `string` | `""` | no |
+| apex\_domain | The parent domain to be allocated to the cluster | `string` | `""` | no |
+| apex\_domain\_gcp\_project | The GCP project the parent domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project. | `string` | `""` | no |
 | resource\_labels | Set of labels to be applied to the cluster | `map(string)` | `{}` | no |
 | subdomain | Optional sub domain for the installation | `string` | `""` | no |
 | tls\_email | Email used by Let's Encrypt. Required for TLS when parent\_domain is specified | `string` | `""` | no |
