@@ -25,7 +25,7 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
   Add the new `bot` user to your Git Organisation, for now give it Owner permissions, we will reduce this to member permissions soon.
 - Check and install latest `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
 - Check and install latest `jx` CLI - [see here](https://github.com/jenkins-x/jx/releases)
-- Check and install latest `gcloud` CLI
+- Check and install latest `gcloud` CLI - [see here](https://cloud.google.com/sdk/docs/install)
 - Setup local `gcloud` auth so that Terraform can work with GCP
 ```bash
 gcloud auth application-default login
