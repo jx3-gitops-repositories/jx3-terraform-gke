@@ -126,12 +126,17 @@ and create or import your applications
 jx project
 ```
 
-## Terraform Inputs
+# Terraform
 
 For the full list of terraform inputs [see the documentation for jenkins-x/terraform-google-jx](https://github.com/jenkins-x/terraform-google-jx#inputs)
 
+<!-- BEGIN_TF_DOCS -->
+## Inputs
+
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| apex\_domain | The apex / parent domain to be allocated to the cluster | `string` | `""` | no |
+| apex\_domain\_gcp\_project | The GCP project the parent domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project. | `string` | `""` | no |
 | apex\_domain\_integration\_enabled | Add recordsets from a subdomain to a parent / apex domain | `bool` | `true` | no |
 | cluster\_location | The location (region or zone) in which the cluster master will be created. If you specify a zone (such as us-central1-a), the cluster will be a zonal cluster with a single cluster master. If you specify a region (such as us-west1), the cluster will be a regional cluster with multiple masters spread across zones in the region | `string` | `"us-central1-a"` | no |
 | cluster\_name | Name of the Kubernetes cluster to create | `string` | `""` | no |
@@ -147,11 +152,10 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 | node\_disk\_size | Node disk size in GB | `string` | `"100"` | no |
 | node\_disk\_type | Node disk type, either pd-standard or pd-ssd | `string` | `"pd-standard"` | no |
 | node\_machine\_type | Node type for the Kubernetes cluster | `string` | `"n1-standard-2"` | no |
-| parent\_domain | The parent domain to be allocated to the cluster | `string` | `""` | no |
-| parent\_domain\_gcp\_project | The GCP project the parent domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project. | `string` | `""` | no |
 | resource\_labels | Set of labels to be applied to the cluster | `map(string)` | `{}` | no |
 | subdomain | Optional sub domain for the installation | `string` | `""` | no |
 | tls\_email | Email used by Let's Encrypt. Required for TLS when parent\_domain is specified | `string` | `""` | no |
+<!-- END_TF_DOCS -->
 
 # Cleanup
 
@@ -164,9 +168,9 @@ terraform destroy
 
 When adding new variables please regenerate the markdown table 
 ```sh
-terraform-docs markdown table .
+terraform-docs markdown table --output-file README.md --show inputs --anchor=false --html=false .
 ```
-and replace the Inputs section above
+which will replace the Inputs section above.
 
 ## Formatting
 
