@@ -30,6 +30,10 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
 ```bash
 gcloud auth application-default login
 ```
+- Google cloud container services has to be enabled
+```bash
+gcloud services enable container.googleapis.com
+```
 
 # Git repositories
 
@@ -84,6 +88,8 @@ jx_git_url = "https://github.com/myowner/myname-cluster"
 gcp_project = "my-gcp-project"
 gsm = true
 ```
+4. Google container services needs to be enabled.
+5. 
 
 4. commit and push any changes to your **Infrastructure** git repository:
 
