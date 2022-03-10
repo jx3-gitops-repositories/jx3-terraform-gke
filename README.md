@@ -51,7 +51,9 @@ __Note: remember to create the Git repositories below in your Git Organisation r
     __Note:__ Ensure **Owner** is the name of the Git Organisation that will hold the GitOps repositories used for Jenkins X.
 
 2. Create a **Cluster** git repository; choosing your desired secrets store, either Google Secret Manager or Vault:
-    - __Google Secret Manager__: https://github.com/jx3-gitops-repositories/jx3-gke-gsm/generate
+    - __Google Secret Manager__: https://github.com/jx3-gitops-repositories/jx3-gke-gsm/generate 
+    __Note:__ If you choose Google Secret Manager, billing must be activated on your acccount!
+    
 
     - __Vault__: https://github.com/jx3-gitops-repositories/jx3-gke-vault/generate
     
