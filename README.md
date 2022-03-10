@@ -23,8 +23,8 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
 
 - __This bot user needs to have write permission to write to any git repository used by Jenkins X.  This can be done by adding the bot user to the git organisation level or individual repositories as a collaborator__
   Add the new `bot` user to your Git Organisation, for now give it Owner permissions, we will reduce this to member permissions soon.
-- Check and install latest `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
-- Check and install latest `jx` CLI - [see here](https://github.com/jenkins-x/jx/releases)
+- Check and install latest `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
+- Check and install latest `jx` CLI - [see here](https://jenkins-x.io/v3/admin/setup/jx3/)
 - Check and install latest `gcloud` CLI - [see here](https://cloud.google.com/sdk/docs/install)
 - Setup local `gcloud` auth so that Terraform can work with GCP
 ```bash
