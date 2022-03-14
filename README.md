@@ -88,8 +88,6 @@ jx_git_url = "https://github.com/myowner/myname-cluster"
 gcp_project = "my-gcp-project"
 gsm = true
 ```
-4. Google container services needs to be enabled.
-5. 
 
 4. commit and push any changes to your **Infrastructure** git repository:
 
