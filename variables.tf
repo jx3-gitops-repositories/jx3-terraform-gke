@@ -66,6 +66,12 @@ variable "force_destroy" {
   default     = false
 }
 
+variable "node_preemptible" {
+  description = "Use preemptible nodes"
+  type        = bool
+  default     = false
+}
+
 // ----------------------------------------------------------------------------
 // Ingress
 // ----------------------------------------------------------------------------
