@@ -22,6 +22,7 @@ module "jx" {
   apex_domain_gcp_project         = var.apex_domain_gcp_project
   apex_domain_integration_enabled = var.apex_domain_integration_enabled
   node_preemptible                = var.node_preemptible
+  kuberhealthy                    = var.kuberhealthy
 }
 
 output "connect" {
