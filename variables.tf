@@ -72,6 +72,12 @@ variable "node_preemptible" {
   default     = false
 }
 
+variable "node_spot" {
+  description = "Use spot nodes"
+  type        = bool
+  default     = false
+}
+
 // ----------------------------------------------------------------------------
 // Ingress
 // ----------------------------------------------------------------------------

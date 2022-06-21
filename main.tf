@@ -23,6 +23,7 @@ module "jx" {
   apex_domain_integration_enabled = var.apex_domain_integration_enabled
   node_preemptible                = var.node_preemptible
   kuberhealthy                    = var.kuberhealthy
+  node_spot                       = var.node_spot
 }
 
 output "connect" {
