@@ -1,14 +1,17 @@
 module "jx" {
   source                          = "github.com/jenkins-x/terraform-google-jx?ref=v1.11.2"
   gcp_project                     = var.gcp_project
+  master_authorized_networks = var.master_authorized_networks
   jx2                             = false
   gsm                             = var.gsm
   cluster_name                    = var.cluster_name
   cluster_location                = var.cluster_location
   resource_labels                 = var.resource_labels
   node_machine_type               = var.node_machine_type
-  min_node_count                  = var.min_node_count
-  max_node_count                  = var.max_node_count
+  initial_cluster_node_count = var.initial_cluster_node_count
+  initial_primary_node_pool_node_count = var.initial_primary_node_pool_node_count
+  autoscaler_min_node_count    = var.autoscaler_min_node_count
+  autoscaler_max_node_count    = var.autoscaler_max_node_count
   node_disk_size                  = var.node_disk_size
   node_disk_type                  = var.node_disk_type
   tls_email                       = var.tls_email

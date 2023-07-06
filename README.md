@@ -153,8 +153,10 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 | jx\_bot\_username | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
 | jx\_git\_url | URL for the Jenins X cluster git repository | `string` | n/a | yes |
 | lets\_encrypt\_production | Flag to determine wether or not to use the Let's Encrypt production server. | `bool` | `true` | no |
-| max\_node\_count | Maximum number of cluster nodes | `number` | `5` | no |
-| min\_node\_count | Minimum number of cluster nodes | `number` | `3` | no |
+| autoscaler\_max\_node\_count | Maximum number of cluster nodes | `number` | `5` | no |
+| autoscaler\_min\_node\_count| Minimum number of cluster nodes | `number` | `3` | no |
+| initial\_primary\_node\_pool\_node\_count | initial node count for the primary pool | `number` | `3` | no |
+| initial\_cluster\_node\_count | initial node count for the cluster | `number` | `3` | no |
 | node\_disk\_size | Node disk size in GB | `string` | `"100"` | no |
 | node\_disk\_type | Node disk type, either pd-standard or pd-ssd | `string` | `"pd-standard"` | no |
 | node\_machine\_type | Node type for the Kubernetes cluster | `string` | `"n1-standard-2"` | no |
