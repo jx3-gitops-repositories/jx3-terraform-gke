@@ -49,17 +49,22 @@ variable "node_machine_type" {
 }
 
 variable "initial_cluster_node_count" {
-  description = "Minimum number of cluster nodes"
+  description = "initial number of cluster nodes"
   type        = number
   default     = 3
 }
 
 variable "initial_primary_node_pool_node_count" {
-  description = "Minimum number of cluster nodes"
+  description = "initial number of pool nodes"
   type        = number
   default     = 1
 }
 
+variable "autoscaler_min_node_count" {
+  description = "Minimum number of cluster nodes"
+  type        = number
+  default     = 3
+}
 variable "autoscaler_min_node_count" {
   description = "Minimum number of cluster nodes"
   type        = number
