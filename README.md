@@ -146,6 +146,7 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 | apex\_domain\_integration\_enabled | Add recordsets from a subdomain to a parent / apex domain | `bool` | `true` | no |
 | cluster\_location | The location (region or zone) in which the cluster master will be created. If you specify a zone (such as us-central1-a), the cluster will be a zonal cluster with a single cluster master. If you specify a region (such as us-west1), the cluster will be a regional cluster with multiple masters spread across zones in the region | `string` | `"us-central1-a"` | no |
 | cluster\_name | Name of the Kubernetes cluster to create | `string` | `""` | no |
+| master\_authorized\_networks| List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically allowlists). | `	list(object({ cidr_block = string, display_name = string }))` | `[]` | no |
 | force\_destroy | Flag to determine whether storage buckets get forcefully destroyed | `bool` | `false` | no |
 | gcp\_project | The name of the GCP project to use | `string` | n/a | yes |
 | gsm | Enables Google Secrets Manager, not available with JX2 | `bool` | `false` | no |
