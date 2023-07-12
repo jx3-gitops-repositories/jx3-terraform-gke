@@ -146,6 +146,7 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 | apex\_domain\_integration\_enabled | Add recordsets from a subdomain to a parent / apex domain | `bool` | `true` | no |
 | cluster\_location | The location (region or zone) in which the cluster master will be created. If you specify a zone (such as us-central1-a), the cluster will be a zonal cluster with a single cluster master. If you specify a region (such as us-west1), the cluster will be a regional cluster with multiple masters spread across zones in the region | `string` | `"us-central1-a"` | no |
 | cluster\_name | Name of the Kubernetes cluster to create | `string` | `""` | no |
+| master\_authorized\_networks| List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically allowlists). | `	list(object({ cidr_block = string, display_name = string }))` | `[]` | no |
 | force\_destroy | Flag to determine whether storage buckets get forcefully destroyed | `bool` | `false` | no |
 | gcp\_project | The name of the GCP project to use | `string` | n/a | yes |
 | gsm | Enables Google Secrets Manager, not available with JX2 | `bool` | `false` | no |
@@ -153,8 +154,10 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 | jx\_bot\_username | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
 | jx\_git\_url | URL for the Jenins X cluster git repository | `string` | n/a | yes |
 | lets\_encrypt\_production | Flag to determine wether or not to use the Let's Encrypt production server. | `bool` | `true` | no |
-| max\_node\_count | Maximum number of cluster nodes | `number` | `5` | no |
-| min\_node\_count | Minimum number of cluster nodes | `number` | `3` | no |
+| autoscaler\_max\_node\_count | Maximum number of cluster nodes | `number` | `5` | no |
+| autoscaler\_min\_node\_count| Minimum number of cluster nodes | `number` | `3` | no |
+| initial\_primary\_node\_pool\_node\_count | initial node count for the primary pool | `number` | `3` | no |
+| initial\_cluster\_node\_count | initial node count for the cluster | `number` | `3` | no |
 | node\_disk\_size | Node disk size in GB | `string` | `"100"` | no |
 | node\_disk\_type | Node disk type, either pd-standard or pd-ssd | `string` | `"pd-standard"` | no |
 | node\_machine\_type | Node type for the Kubernetes cluster | `string` | `"n1-standard-2"` | no |

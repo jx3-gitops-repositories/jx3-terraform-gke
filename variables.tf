@@ -30,22 +30,56 @@ variable "resource_labels" {
 // ----------------------------------------------------------------------------
 // cluster configuration
 // ----------------------------------------------------------------------------
+variable "master_authorized_networks" {
+  type        = list(object({ cidr_block = string, display_name = string }))
+  description = "List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically allowlists)."
+  default     =  [
+    {
+    "cidr_block" = "0.0.0.0/0",
+    "display_name" = "any"
+    },
+]
+}
+
 variable "node_machine_type" {
   description = "Node type for the Kubernetes cluster"
   type        = string
   default     = "n1-standard-2"
 }
 
-variable "min_node_count" {
+variable "initial_cluster_node_count" {
+  description = "initial number of cluster nodes"
+  type        = number
+  default     = 3
+}
+
+variable "initial_primary_node_pool_node_count" {
+  description = "initial number of pool nodes"
+  type        = number
+  default     = 1
+}
+
+variable "autoscaler_min_node_count" {
+  description = "Minimum number of cluster nodes"
+  type        = number
+  default     = 3
+}
+variable "autoscaler_min_node_count" {
   description = "Minimum number of cluster nodes"
   type        = number
   default     = 3
 }
 
-variable "max_node_count" {
+variable "autoscaler_max_node_count" {
   description = "Maximum number of cluster nodes"
   type        = number
   default     = 5
+}
+
+variable "autoscaler_location_policy" {
+  description = "location policy for primary node pool"
+  type        = string
+  default     = "ANY"
 }
 
 variable "node_disk_size" {
@@ -143,3 +177,4 @@ variable "kuberhealthy" {
   type        = bool
   default     = true
 }
+
