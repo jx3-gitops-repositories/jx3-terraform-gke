@@ -170,6 +170,6 @@ variable "apex_domain_integration_enabled" {
 variable "kuberhealthy" {
   description = "Enables Kuberhealthy helm installation"
   type        = bool
-  default     = true
+  default     = false
 }
 
