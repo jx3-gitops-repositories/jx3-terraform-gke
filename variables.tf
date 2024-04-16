@@ -173,3 +173,20 @@ variable "kuberhealthy" {
   default     = false
 }
 
+// GCP Artifact
+variable "artifact_repository_id" {
+  description = "artifact registry repository Name, Defaul Cluster Name"
+  type        = string
+  default     = ""
+}
+variable "artifact_description" {
+  description = "artifact registry repository Description"
+  type        = string
+  default     = "jenkins-x Docker Repository" 
+}
+
+variable "artifact_enable" {
+  description = "Create artifact registry repository"
+  type        = bool
+  default     = true
+}
