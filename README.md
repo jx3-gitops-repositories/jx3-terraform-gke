@@ -143,29 +143,37 @@ For the full list of terraform inputs [see the documentation for jenkins-x/terra
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| apex\_domain\_integration\_enabled | Add recordsets from a subdomain to a parent / apex domain | `bool` | `true` | no |
-| cluster\_location | The location (region or zone) in which the cluster master will be created. If you specify a zone (such as us-central1-a), the cluster will be a zonal cluster with a single cluster master. If you specify a region (such as us-west1), the cluster will be a regional cluster with multiple masters spread across zones in the region | `string` | `"us-central1-a"` | no |
-| cluster\_name | Name of the Kubernetes cluster to create | `string` | `""` | no |
-| master\_authorized\_networks| List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically allowlists). | `	list(object({ cidr_block = string, display_name = string }))` | `[]` | no |
-| force\_destroy | Flag to determine whether storage buckets get forcefully destroyed | `bool` | `false` | no |
-| gcp\_project | The name of the GCP project to use | `string` | n/a | yes |
-| gsm | Enables Google Secrets Manager, not available with JX2 | `bool` | `false` | no |
-| jx\_bot\_token | Bot token used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
-| jx\_bot\_username | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
-| jx\_git\_url | URL for the Jenins X cluster git repository | `string` | n/a | yes |
-| lets\_encrypt\_production | Flag to determine wether or not to use the Let's Encrypt production server. | `bool` | `true` | no |
-| autoscaler\_max\_node\_count | Maximum number of cluster nodes | `number` | `5` | no |
-| autoscaler\_min\_node\_count| Minimum number of cluster nodes | `number` | `3` | no |
-| initial\_primary\_node\_pool\_node\_count | initial node count for the primary pool | `number` | `3` | no |
-| initial\_cluster\_node\_count | initial node count for the cluster | `number` | `3` | no |
-| node\_disk\_size | Node disk size in GB | `string` | `"100"` | no |
-| node\_disk\_type | Node disk type, either pd-standard or pd-ssd | `string` | `"pd-standard"` | no |
-| node\_machine\_type | Node type for the Kubernetes cluster | `string` | `"n1-standard-2"` | no |
-| parent\_domain | The parent domain to be allocated to the cluster | `string` | `""` | no |
-| parent\_domain\_gcp\_project | The GCP project the parent domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project. | `string` | `""` | no |
-| resource\_labels | Set of labels to be applied to the cluster | `map(string)` | `{}` | no |
-| subdomain | Optional sub domain for the installation | `string` | `""` | no |
-| tls\_email | Email used by Let's Encrypt. Required for TLS when parent\_domain is specified | `string` | `""` | no |
+| <a name="input_apex_domain"></a> [apex\_domain](#input\_apex\_domain) | The apex / parent domain to be allocated to the cluster | `string` | `""` | no |
+| <a name="input_apex_domain_gcp_project"></a> [apex\_domain\_gcp\_project](#input\_apex\_domain\_gcp\_project) | The GCP project the parent domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project. | `string` | `""` | no |
+| <a name="input_apex_domain_integration_enabled"></a> [apex\_domain\_integration\_enabled](#input\_apex\_domain\_integration\_enabled) | Add recordsets from a subdomain to a parent / apex domain | `bool` | `true` | no |
+| <a name="input_artifact_description"></a> [artifact\_description](#input\_artifact\_description) | artifact registry repository Description | `string` | `"jenkins-x Docker Repository"` | no |
+| <a name="input_artifact_enable"></a> [artifact\_enable](#input\_artifact\_enable) | Create artifact registry repository | `bool` | `true` | no |
+| <a name="input_artifact_location"></a> [artifact\_location](#input\_artifact\_location) | artifact registry repository Location | `string` | `"us-central1"` | no |
+| <a name="input_artifact_repository_id"></a> [artifact\_repository\_id](#input\_artifact\_repository\_id) | artifact registry repository Name, Defaul Cluster Name | `string` | `""` | no |
+| <a name="input_autoscaler_location_policy"></a> [autoscaler\_location\_policy](#input\_autoscaler\_location\_policy) | location policy for primary node pool | `string` | `"ANY"` | no |
+| <a name="input_autoscaler_max_node_count"></a> [autoscaler\_max\_node\_count](#input\_autoscaler\_max\_node\_count) | Maximum number of cluster nodes | `number` | `5` | no |
+| <a name="input_autoscaler_min_node_count"></a> [autoscaler\_min\_node\_count](#input\_autoscaler\_min\_node\_count) | Minimum number of cluster nodes | `number` | `3` | no |
+| <a name="input_cluster_location"></a> [cluster\_location](#input\_cluster\_location) | The location (region or zone) in which the cluster master will be created. If you specify a zone (such as us-central1-a), the cluster will be a zonal cluster with a single cluster master. If you specify a region (such as us-west1), the cluster will be a regional cluster with multiple masters spread across zones in the region | `string` | `"us-central1-a"` | no |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the Kubernetes cluster to create | `string` | `""` | no |
+| <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Flag to determine whether storage buckets get forcefully destroyed | `bool` | `false` | no |
+| <a name="input_gcp_project"></a> [gcp\_project](#input\_gcp\_project) | The name of the GCP project to use | `string` | n/a | yes |
+| <a name="input_gsm"></a> [gsm](#input\_gsm) | Enables Google Secrets Manager, not available with JX2 | `bool` | `false` | no |
+| <a name="input_initial_cluster_node_count"></a> [initial\_cluster\_node\_count](#input\_initial\_cluster\_node\_count) | initial number of cluster nodes | `number` | `3` | no |
+| <a name="input_initial_primary_node_pool_node_count"></a> [initial\_primary\_node\_pool\_node\_count](#input\_initial\_primary\_node\_pool\_node\_count) | initial number of pool nodes | `number` | `1` | no |
+| <a name="input_jx_bot_token"></a> [jx\_bot\_token](#input\_jx\_bot\_token) | Bot token used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
+| <a name="input_jx_bot_username"></a> [jx\_bot\_username](#input\_jx\_bot\_username) | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
+| <a name="input_jx_git_url"></a> [jx\_git\_url](#input\_jx\_git\_url) | URL for the Jenins X cluster git repository | `string` | n/a | yes |
+| <a name="input_kuberhealthy"></a> [kuberhealthy](#input\_kuberhealthy) | Enables Kuberhealthy helm installation | `bool` | `false` | no |
+| <a name="input_lets_encrypt_production"></a> [lets\_encrypt\_production](#input\_lets\_encrypt\_production) | Flag to determine wether or not to use the Let's Encrypt production server. | `bool` | `true` | no |
+| <a name="input_master_authorized_networks"></a> [master\_authorized\_networks](#input\_master\_authorized\_networks) | List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically allowlists). | `list(object({ cidr_block = string, display_name = string }))` | <pre>[<br>  {<br>    "cidr_block": "0.0.0.0/0",<br>    "display_name": "any"<br>  }<br>]</pre> | no |
+| <a name="input_node_disk_size"></a> [node\_disk\_size](#input\_node\_disk\_size) | Node disk size in GB | `string` | `"100"` | no |
+| <a name="input_node_disk_type"></a> [node\_disk\_type](#input\_node\_disk\_type) | Node disk type, either pd-standard or pd-ssd | `string` | `"pd-standard"` | no |
+| <a name="input_node_machine_type"></a> [node\_machine\_type](#input\_node\_machine\_type) | Node type for the Kubernetes cluster | `string` | `"n1-standard-2"` | no |
+| <a name="input_node_preemptible"></a> [node\_preemptible](#input\_node\_preemptible) | Use preemptible nodes | `bool` | `false` | no |
+| <a name="input_node_spot"></a> [node\_spot](#input\_node\_spot) | Use spot nodes | `bool` | `false` | no |
+| <a name="input_resource_labels"></a> [resource\_labels](#input\_resource\_labels) | Set of labels to be applied to the cluster | `map(string)` | `{}` | no |
+| <a name="input_subdomain"></a> [subdomain](#input\_subdomain) | Optional sub domain for the installation | `string` | `""` | no |
+| <a name="input_tls_email"></a> [tls\_email](#input\_tls\_email) | Email used by Let's Encrypt. Required for TLS when parent\_domain is specified | `string` | `""` | no |
 
 # Cleanup
 
