@@ -16,6 +16,7 @@ module "jx" {
   node_disk_type                  = var.node_disk_type
   tls_email                       = var.tls_email
   artifact_enable                 = var.artifact_enable 
+  artifact_location               = var.artifact_location 
   artifact_repository_id          = var.artifact_repository_id
   lets_encrypt_production         = var.lets_encrypt_production
   jx_git_url                      = var.jx_git_url

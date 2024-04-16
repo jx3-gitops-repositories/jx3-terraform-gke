@@ -174,6 +174,11 @@ variable "kuberhealthy" {
 }
 
 // GCP Artifact
+variable "artifact_location" {
+  description = "artifact registry repository Location"
+  type        = string
+  default     = "us-central1" 
+}
 variable "artifact_repository_id" {
   description = "artifact registry repository Name, Defaul Cluster Name"
   type        = string
