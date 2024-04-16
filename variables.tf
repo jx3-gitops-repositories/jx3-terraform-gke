@@ -182,7 +182,7 @@ variable "artifact_location" {
 variable "artifact_repository_id" {
   description = "artifact registry repository Name, Defaul Cluster Name"
   type        = string
-  default     = ""
+  default     = "oci"
 }
 variable "artifact_description" {
   description = "artifact registry repository Description"
