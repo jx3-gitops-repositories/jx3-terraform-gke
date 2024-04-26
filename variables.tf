@@ -180,7 +180,7 @@ variable "artifact_location" {
   default     = "us-central1" 
 }
 variable "artifact_repository_id" {
-  description = "artifact registry repository Name, Defaul Cluster Name"
+  description = "artifact registry repository Name"
   type        = string
   default     = "oci"
 }
