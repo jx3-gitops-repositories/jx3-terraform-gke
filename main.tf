@@ -1,5 +1,5 @@
 module "jx" {
-  source                          = "github.com/jenkins-x/terraform-google-jx?ref=v1.12.6"
+  source                          = "github.com/jenkins-x/terraform-google-jx?ref=v1.12.7"
   gcp_project                     = var.gcp_project
   master_authorized_networks      = var.master_authorized_networks
   jx2                             = false
